@@ -90,7 +90,7 @@ jobs:
             --docker-username=AWS \
             --docker-password=$(aws ecr get-login-password --region ${{ secrets.AWS_REGION }}) \
             --namespace default \
-            --dry-run=client -o yaml | kubectl apply -f -
+            --dry-run=client -o yaml | kubectl apply -f - || true
 
       - name: Deploy Helm
         uses: bitovi/github-actions-deploy-eks-helm@v1.2.8
